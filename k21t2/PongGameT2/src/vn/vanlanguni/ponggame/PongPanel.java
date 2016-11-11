@@ -31,7 +31,7 @@ import javax.swing.Timer;
 /**
  * 
  * @author Invisible Man
- *
+ * change game background
  */
 public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private static final long serialVersionUID = -1097341635155021546L;
