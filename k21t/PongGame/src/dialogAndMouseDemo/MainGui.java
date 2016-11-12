@@ -1,4 +1,4 @@
-package demo;
+package dialogAndMouseDemo;
 
 import java.awt.Dimension;
 
@@ -8,11 +8,11 @@ public class MainGui extends JFrame {
 	CanvasPanel pnl;
 	
 	public MainGui() {
-		setPreferredSize(new Dimension(500, 400));
 		setTitle("Demo");
 		pnl = new CanvasPanel();
 		setContentPane(pnl);
 		pack();
+		setLocationRelativeTo(null);
 	}
 	
 	public static void main(String[] args) {

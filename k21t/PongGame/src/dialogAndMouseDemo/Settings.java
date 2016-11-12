@@ -1,11 +1,27 @@
-package demo;
+package dialogAndMouseDemo;
 
 import java.awt.Color;
 
 public class Settings {
 	private String userName1, userName2;
 	private Color backgroundColor, paddleColor, ballColor;
+
+	public Settings(){	}
 	
+	public Settings(String userName1, String userName2, Color backgroundColor, Color paddleColor, Color ballColor) {
+		super();
+		this.userName1 = userName1;
+		this.userName2 = userName2;
+		this.backgroundColor = backgroundColor;
+		this.paddleColor = paddleColor;
+		this.ballColor = ballColor;
+	}
+
+	public Settings(String u1, String u2) {
+		userName1 = u1;
+		userName2 = u2;
+	}
+
 	public String getUserName2() {
 		return userName2;
 	}
@@ -38,11 +54,11 @@ public class Settings {
 		this.ballColor = ballColor;
 	}
 
-	public String getUserName1(){
+	public String getUserName1() {
 		return userName1;
 	}
-	
-	public void setUserName1(String uname){
+
+	public void setUserName1(String uname) {
 		userName1 = uname;
 	}
 
