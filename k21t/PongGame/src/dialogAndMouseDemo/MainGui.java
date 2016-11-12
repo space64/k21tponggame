@@ -1,9 +1,8 @@
 package dialogAndMouseDemo;
 
-import java.awt.Dimension;
-
 import javax.swing.JFrame;
 
+@SuppressWarnings("serial")
 public class MainGui extends JFrame {
 	CanvasPanel pnl;
 	
