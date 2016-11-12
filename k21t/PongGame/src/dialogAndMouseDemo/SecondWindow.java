@@ -66,7 +66,7 @@ public class SecondWindow extends JDialog{
 
 			@Override
 			public void windowClosing(WindowEvent arg0) {
-				int result = JOptionPane.showConfirmDialog(null, "Exit?");
+				int result = JOptionPane.showConfirmDialog(SecondWindow.this, "Exit?");
 				if(result == JOptionPane.YES_OPTION){
 					setVisible(false);
 				}				
