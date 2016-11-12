@@ -5,10 +5,13 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public class CanvasPanelBallIntersect extends JPanel implements MouseMotionListener, MouseListener {
@@ -34,6 +37,14 @@ public class CanvasPanelBallIntersect extends JPanel implements MouseMotionListe
 		r2 = 40;
 		c1 = Color.ORANGE;
 		c2 = Color.BLUE;
+		Timer t = new Timer(1000/60, new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				repaint();
+			}
+		});
+		t.start();
 	}
 
 	@Override
@@ -60,7 +71,6 @@ public class CanvasPanelBallIntersect extends JPanel implements MouseMotionListe
 		if (dragged) {
 			p1.x = e.getX() - dx;
 			p1.y = e.getY() - dy;
-			repaint();
 			if (getPointDistance(p1, p2) <= r1 + r2) {
 				intersec = true;
 				c2 = Color.GREEN;
@@ -86,7 +96,6 @@ public class CanvasPanelBallIntersect extends JPanel implements MouseMotionListe
 			hover = false;
 			setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		}
-		repaint();
 	}
 
 	@Override
@@ -113,7 +122,6 @@ public class CanvasPanelBallIntersect extends JPanel implements MouseMotionListe
 			c1 = Color.RED;
 			dragged = true;
 		}
-		repaint();
 	}
 
 	@Override
@@ -121,6 +129,5 @@ public class CanvasPanelBallIntersect extends JPanel implements MouseMotionListe
 		pressed = false;
 		dragged = false;
 		c1 = Color.ORANGE;
-		repaint();
 	}
 }
