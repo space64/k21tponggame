@@ -66,8 +66,8 @@ public class CanvasPanel extends JPanel implements MouseMotionListener, MouseLis
 			x = e.getX() - dx;
 			y = e.getY() - dy;
 			repaint();
-			// System.out.println(String.format("Mouse x: %d, Mouse y: %d, dx:
-			// %d, dx: %d", e.getX(), e.getY(), dx, dy));
+			System.out.format("Mouse x: %d , Mouse y: %d, dx: %d, dx: %d",
+					e.getX(), e.getY(), dx, dy);
 		}
 	}
 
@@ -97,8 +97,8 @@ public class CanvasPanel extends JPanel implements MouseMotionListener, MouseLis
 			// Stop and wait for user input
 			
 			if (w.dialogResult == MyDialogResult.YES) {
-				System.out.println(String.format("User settings: \n Username1: %s \n Username2: %s",
-						s.getUserName1(), s.getUserName2()));
+				System.out.format("User settings: \n Username1: %s \n Username2: %s",
+						s.getUserName1(), s.getUserName2());
 			} else {
 				System.out.println("User chose to cancel");
 			}
