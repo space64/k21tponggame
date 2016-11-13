@@ -59,7 +59,7 @@ public class CanvasPanelBallIntersect extends JPanel implements MouseMotionListe
 			if (intersec) {
 				g.drawString("Two circles are intersecting", p1.x + 30, p1.y + 30);
 			} else {
-				g.drawString("Please move me to the red circle", p1.x + 30, p1.y + 30);
+				g.drawString("Move me over the blue circle", p1.x + 30, p1.y + 30);
 			}
 		} else {
 			g.drawString("Drag me", p1.x + 30, p1.y + 30);
