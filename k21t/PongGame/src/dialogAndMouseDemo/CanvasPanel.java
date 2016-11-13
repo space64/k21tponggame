@@ -62,7 +62,7 @@ public class CanvasPanel extends JPanel implements MouseMotionListener, MouseLis
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		if (dragged) {
+		if (dragged && CanvasPanel.this.getBounds().contains(e.getPoint())) {
 			x = e.getX() - dx;
 			y = e.getY() - dy;
 			repaint();
