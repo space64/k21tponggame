@@ -2,6 +2,11 @@ package vn.vanlanguni.arraylistdemo;
 import java.awt.Color;
 import java.awt.Rectangle;
 
+/**
+ * 
+ * @author Huyen Pham
+ *
+ */
 @SuppressWarnings("serial")
 public class MyRectangle extends Rectangle {
 	private Color color;

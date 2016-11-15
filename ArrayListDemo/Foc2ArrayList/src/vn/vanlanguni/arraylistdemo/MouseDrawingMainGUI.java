@@ -18,9 +18,14 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.ActionEvent;
 
+/**
+ * 
+ * @author Huyen Pham
+ *
+ */
 @SuppressWarnings("serial")
-public class MainGui extends JFrame implements ActionListener {
-	CanvasPanel pnlMain;
+public class MouseDrawingMainGUI extends JFrame implements ActionListener {
+	MouseDrawingPanel pnlMain;
 	JPanel pnlTop;
 	private JTextField txtX;
 	private JTextField txtY;
@@ -33,11 +38,11 @@ public class MainGui extends JFrame implements ActionListener {
 	KeyAdapter key;
 	FocusAdapter focus;
 
-	public MainGui() {
-		setTitle("Demo");
+	public MouseDrawingMainGUI() {
+		setTitle("Simple Drawing Using Mouse - Space64");
 		pnlTop = new JPanel();
 		pnlTop.setPreferredSize(new Dimension(500, 70));
-		pnlTop.setBackground(Color.GRAY);
+		pnlTop.setBackground(Color.LIGHT_GRAY);
 		getContentPane().add(pnlTop, BorderLayout.NORTH);
 		pnlTop.setLayout(null);
 
@@ -82,13 +87,13 @@ public class MainGui extends JFrame implements ActionListener {
 		// Button Add
 		btnAdd = new JButton("Add");
 		btnAdd.addActionListener(this);
-		btnAdd.setBounds(283, 11, 61, 44);
+		btnAdd.setBounds(283, 11, 72, 44);
 		pnlTop.add(btnAdd);
 
 		// Button Clear
 		btnClear = new JButton("Clear");
 		btnClear.addActionListener(this);
-		btnClear.setBounds(352, 11, 61, 44);
+		btnClear.setBounds(365, 11, 74, 44);
 		pnlTop.add(btnClear);
 
 		// Button Color
@@ -131,7 +136,7 @@ public class MainGui extends JFrame implements ActionListener {
 		txtH.addFocusListener(focus);
 
 		// Main panel
-		pnlMain = new CanvasPanel();
+		pnlMain = new MouseDrawingPanel();
 		getContentPane().add(pnlMain, BorderLayout.CENTER);
 		pack();
 		setLocationRelativeTo(null);
@@ -160,8 +165,9 @@ public class MainGui extends JFrame implements ActionListener {
 	}
 
 	private void selectColor() {
-		drawColor = JColorChooser.showDialog(MainGui.this, "Select a draw color", drawColor);
+		drawColor = JColorChooser.showDialog(MouseDrawingMainGUI.this, "Select a draw color", drawColor);
 		btnColor.setBackground(drawColor);
+		pnlMain.setDefaultColor(drawColor);
 	}
 
 	private void addRectangle() {
@@ -181,7 +187,7 @@ public class MainGui extends JFrame implements ActionListener {
 	}
 
 	public static void main(String[] args) {
-		MainGui f = new MainGui();
+		MouseDrawingMainGUI f = new MouseDrawingMainGUI();
 		f.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		f.setVisible(true);
 	}

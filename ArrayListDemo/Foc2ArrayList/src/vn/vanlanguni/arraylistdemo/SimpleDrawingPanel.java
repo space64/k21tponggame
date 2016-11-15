@@ -9,12 +9,17 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * @author Huyen Pham
+ *
+ */
 @SuppressWarnings("serial")
-public class CanvasPanel extends JPanel{
+public class SimpleDrawingPanel extends JPanel{
 	ArrayList<Rectangle> rectangleList;
 	Color defaultColor = Color.BLACK;
 
-	public CanvasPanel() {
+	public SimpleDrawingPanel() {
 		setPreferredSize(new Dimension(500, 400));
 		setFocusable(true);
 		rectangleList = new ArrayList<>(10);
