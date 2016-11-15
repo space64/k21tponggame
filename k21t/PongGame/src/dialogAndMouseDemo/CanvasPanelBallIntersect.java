@@ -16,7 +16,7 @@ import javax.swing.Timer;
 @SuppressWarnings("serial")
 public class CanvasPanelBallIntersect extends JPanel implements MouseMotionListener, MouseListener {
 	private static final int WIDTH = 500;
-	private static final int HEIGHT = 400;
+	private static final int HEIGHT = 500;
 	boolean hover;
 	boolean pressed;
 	boolean dragged;

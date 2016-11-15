@@ -1,5 +1,7 @@
 package dialogAndMouseDemo;
 
+import java.awt.Rectangle;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -10,10 +12,11 @@ public class MainGui extends JFrame {
 	public MainGui() {
 		setTitle("Demo");
 		pnl = new CanvasPanel();
-		//pnl = new CanvasPanelBallIntersect();
+		pnl = new CanvasPanelBallIntersect();
 		setContentPane(pnl);
 		pack();
 		setLocationRelativeTo(null);
+		
 	}
 	
 	public static void main(String[] args) {

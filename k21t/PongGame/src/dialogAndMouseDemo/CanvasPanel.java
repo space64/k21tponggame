@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class CanvasPanel extends JPanel implements MouseMotionListener, MouseListener {
 	private static final int WIDTH = 500;
-	private static final int HEIGHT = 400;
+	private static final int HEIGHT = 500;
 	Color buttonColor = Color.BLUE;
 	Rectangle rect;
 	Rectangle rect2;
@@ -73,7 +73,7 @@ public class CanvasPanel extends JPanel implements MouseMotionListener, MouseLis
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		// System.out.println(String.format("x=%d - y=%d", e.getX(), e.getY()));
+		// System.out.format("x=%d - y=%d", e.getX(), e.getY());
 		if (rect.contains(e.getX(), e.getY())) {
 			buttonColor = Color.RED;
 			hover = true;
@@ -93,11 +93,12 @@ public class CanvasPanel extends JPanel implements MouseMotionListener, MouseLis
 			w.setLocationRelativeTo(CanvasPanel.this);
 			w.setVisible(true);
 			Settings s = w.getSetings();
+			System.out.println("After open window");
 			
 			// Stop and wait for user input
 			
 			if (w.dialogResult == MyDialogResult.YES) {
-				System.out.format("User settings: \n Username1: %s \n Username2: %s",
+				System.out.printf("User settings: \n Username1: %s \n Username2: %s",
 						s.getUserName1(), s.getUserName2());
 			} else {
 				System.out.println("User chose to cancel");
