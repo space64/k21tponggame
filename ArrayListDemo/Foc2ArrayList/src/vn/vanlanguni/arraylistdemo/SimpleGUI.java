@@ -1,12 +1,10 @@
 package vn.vanlanguni.arraylistdemo;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
+
+@SuppressWarnings("serial")
 public class SimpleGUI extends JFrame {
 	MouseDrawingPanel pnlMain;
 	
