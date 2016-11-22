@@ -50,120 +50,79 @@ public class MouseDrawingPanel extends JPanel implements MouseListener, MouseMot
 		t.start();
 	}
 
-	public ArrayList<Rectangle> getRectangleList() {
-		return rectangleList;
-	}
-
-	public void setRectangleList(ArrayList<Rectangle> rectangleList) {
-		this.rectangleList = rectangleList;
-		repaint();
-	}
-
-	public Color getDefaultColor() {
-		return defaultColor;
-	}
-
-	public void setDefaultColor(Color defaultColor) {
-		this.defaultColor = defaultColor;
-	}
-
-	public void reDrawRectangleList() {
-		repaint();
-	}
-
+	
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-
-		// Draw rectangles in a list
-		Graphics2D g2d = (Graphics2D) g.create();
-		if (rectangleList != null) {
-			BasicStroke stroke = new BasicStroke(2.5f);
-			g2d.setStroke(stroke);
-			for (Rectangle rect : rectangleList) {
-				if (rect.getClass().equals(MyRectangle.class)) {
-					Color c = ((MyRectangle) rect).getColor();
-					g2d.setColor(c);
-				} else {
-					g2d.setColor(defaultColor);
-				}
-				g2d.drawRect(rect.x, rect.y, rect.width, rect.height);
-			}
-		}
-		// Draw temporary rectangle while user draw using mouse
-		if (dragged && tmpRect != null) {
-			float dash1[] = { 10.0f };
-			BasicStroke dashed = new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, dash1,
-					0.0f);
-			g2d.setStroke(dashed);
-			g2d.setColor(tmpRect.getColor());
+		Graphics2D g2d = (Graphics2D)g.create();
+		float dash1[] = { 10.0f};
+		BasicStroke stroke = new BasicStroke(1.0f, BasicStroke.CAP_BUTT, 
+				BasicStroke.JOIN_MITER, 10.0f, dash1, 0.0f);
+		g2d.setStroke(stroke);
+		if(tmpRect != null){
 			g2d.drawRect(tmpRect.x, tmpRect.y, tmpRect.width, tmpRect.height);
 		}
-		// Draw mouse coordinate
-		if (showCoordinate) {
-			g2d.setFont(new Font("Tahoma", Font.BOLD, 10));
-			g2d.setColor(Color.LIGHT_GRAY);
-			g2d.drawString(String.format("x: %d", mouseX), mouseX + 10, mouseY + 25);
-			g2d.drawString(String.format("y: %d", mouseY), mouseX + 10, mouseY + 35);
+		
+		g2d.setStroke(new BasicStroke(3.0f));
+		for(Rectangle tmp: rectangleList){
+			g2d.drawRect(tmp.x, tmp.y, tmp.width, tmp.height);
 		}
-
 	}
+
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		dragged = true;
 		int x2 = e.getX();
 		int y2 = e.getY();
-		mouseX = e.getX();
-		mouseY = e.getY();
-		int recX = x1 < x2 ? x1 : x2;
-		int recY = y1 < y2 ? y1 : y2;
-		int width = Math.abs(x1 - x2);
-		int height = Math.abs(y1 - y2);
-		tmpRect = new MyRectangle(recX, recY, width, height, defaultColor);
+		int w = Math.abs(x2 - x1);
+		int h = Math.abs(y2 - y1);
+		int x = (x1 < x2) ? x1 : x2;
+		int y = (y1 < y2) ? y1 : y2;
+		tmpRect = new MyRectangle(x, y, w, h);
 
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		mouseX = e.getX();
-		mouseY = e.getY();
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		showCoordinate = true;
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		showCoordinate = false;
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		x1 = e.getX();
 		y1 = e.getY();
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		int x2 = e.getX();
 		int y2 = e.getY();
-		if (x1 != x2 && y1 != y2) {
-			int recX = x1 < x2 ? x1 : x2;
-			int recY = y1 < y2 ? y1 : y2;
-			int width = Math.abs(x1 - x2);
-			int height = Math.abs(y1 - y2);
-			MyRectangle rect = new MyRectangle(recX, recY, width, height, defaultColor);
-			rectangleList.add(rect);
-			tmpRect = null;
-		}
-		dragged = false;
+		int w = Math.abs(x2 - x1);
+		int h = Math.abs(y2 - y1);
+		int x = (x1 < x2) ? x1 : x2;
+		int y = (y1 < y2) ? y1 : y2;
+		tmpRect = new MyRectangle(x, y, w, h);
+		rectangleList.add(tmpRect);
+
 	}
 }
