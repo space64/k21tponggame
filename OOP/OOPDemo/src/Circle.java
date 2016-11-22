@@ -3,8 +3,6 @@ import java.awt.Point;
 
 public class Circle extends Shape {
 	private int radius;
-	private Point center;
-
 	public Circle(int radius, Point center) {
 		super("Circle");
 		this.radius = radius;
@@ -17,14 +15,6 @@ public class Circle extends Shape {
 
 	public void setRadius(int radius) {
 		this.radius = radius;
-	}
-
-	public Point getCenter() {
-		return center;
-	}
-
-	public void setCenter(Point center) {
-		this.center = center;
 	}
 
 	@Override

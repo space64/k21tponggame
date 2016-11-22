@@ -40,7 +40,7 @@ public class ShapeTestWithSaveImage extends JFrame {
 		setContentPane(pnl);
 		pack();
 		image = new BufferedImage(_WIDTH, _HEIGHT, BufferedImage.TYPE_INT_ARGB);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
@@ -53,15 +53,11 @@ public class ShapeTestWithSaveImage extends JFrame {
 		JMenuItem mntmClear = new JMenuItem("Clear");
 		mnDraw.add(mntmClear);
 
-		mntmClear.addActionListener(new ActionListener() {
+		JMenu mnEdit = new JMenu("Edit");
+		menuBar.add(mnEdit);
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				list.clear();
-				image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
-				repaint();
-			}
-		});
+		JMenuItem mntmUndo = new JMenuItem("Undo");
+		mnEdit.add(mntmUndo);
 
 		mntmSave.addActionListener(new ActionListener() {
 
@@ -79,6 +75,36 @@ public class ShapeTestWithSaveImage extends JFrame {
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
+				}
+			}
+		});
+
+		mntmClear.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				list.clear();
+				image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
+				repaint();
+			}
+		});
+
+		mntmUndo.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (list != null && list.size() > 0) {
+					Point last = list.get(list.size()-1).getCenter();
+					while (list.size()>0) {
+						int lastIndex = list.size() - 1;
+						if(list.get(lastIndex).getCenter() == last){
+							list.remove(lastIndex);
+						}else{
+							break;
+						}
+					}
+					image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
+					repaint();
 				}
 			}
 		});
@@ -115,7 +141,7 @@ public class ShapeTestWithSaveImage extends JFrame {
 						list.add(s);
 						repaint();
 					}
-					
+
 				}
 			});
 			t.start();
