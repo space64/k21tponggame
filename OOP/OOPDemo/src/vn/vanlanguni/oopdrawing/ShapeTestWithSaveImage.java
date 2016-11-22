@@ -34,7 +34,7 @@ public class ShapeTestWithSaveImage extends JFrame {
 	Canvas pnl;
 	BufferedImage image;
 	boolean leftDrag, rightDrag;
-	Color[] ballColorArray = { Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW, Color.GRAY, Color.PINK, Color.BLACK };
+	Color[] shapeColorArray = { Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW, Color.GRAY, Color.PINK, Color.BLACK };
 
 	public ShapeTestWithSaveImage() {
 		setPreferredSize(new Dimension(600, 600));
@@ -129,7 +129,7 @@ public class ShapeTestWithSaveImage extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					Random rnd = new Random();
-					Color shapeColor = ballColorArray[rnd.nextInt(ballColorArray.length)];
+					Color shapeColor = shapeColorArray[rnd.nextInt(shapeColorArray.length)];
 					Shape s;
 					Point p = getMousePosition();
 					if (p != null && leftDrag) {
@@ -180,13 +180,11 @@ public class ShapeTestWithSaveImage extends JFrame {
 
 		@Override
 		public void mouseEntered(MouseEvent arg0) {
-			// TODO Auto-generated method stub
 
 		}
 
 		@Override
 		public void mouseExited(MouseEvent arg0) {
-			// TODO Auto-generated method stub
 
 		}
 
