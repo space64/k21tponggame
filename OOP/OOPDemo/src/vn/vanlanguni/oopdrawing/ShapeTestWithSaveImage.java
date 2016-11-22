@@ -122,6 +122,7 @@ public class ShapeTestWithSaveImage extends JFrame {
 		public Canvas() {
 			addMouseListener(this);
 			setFocusable(true);
+			setBackground(Color.WHITE);
 			setPreferredSize(new Dimension(_WIDTH, _HEIGHT));
 			Timer t = new Timer(50, new ActionListener() {
 
