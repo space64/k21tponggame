@@ -50,7 +50,7 @@ public class ShapeTestWithSaveImage extends JFrame {
 		JMenu mnDraw = new JMenu("Draw");
 		menuBar.add(mnDraw);
 
-		JMenuItem mntmSave = new JMenuItem("Save drawing image");
+		JMenuItem mntmSave = new JMenuItem("Save drawing");
 		mntmSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
 		mnDraw.add(mntmSave);
 
