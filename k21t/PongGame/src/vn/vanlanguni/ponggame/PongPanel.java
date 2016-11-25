@@ -20,20 +20,22 @@ package vn.vanlanguni.ponggame;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 /**
  * 
- * @author Invisible Man
- * change game background
+ * @author Invisible Man change game background
  */
 public class PongPanel extends JPanel implements ActionListener, KeyListener {
+	protected Color bg;
 	private static final long serialVersionUID = -1097341635155021546L;
 
 	private boolean showTitleScreen = true;
@@ -55,6 +57,11 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private int diameter = 20;
 	private int ballDeltaX = -1;
 	private int ballDeltaY = 3;
+	private ImageIcon ball1 = new ImageIcon("pic/b1.png");
+	private ImageIcon ball2 = new ImageIcon("pic/b2.png");
+	private ImageIcon ball3 = new ImageIcon("pic/b3.png");
+	private ImageIcon ball4 = new ImageIcon("pic/b4.png");
+	private int ballNumber = 0;
 
 	/** Player 1's paddle: position and size */
 	private int playerOneX = 0;
@@ -87,13 +94,32 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		Timer timer = new Timer(1000 / 60, this);
 		timer.start();
 	}
+	
+	public static void move(){
+		
+	}
+	/**
+	 * Tinh tong hai so nguyen
+	 * @param a So nguyen thu nhat
+	 * @param b So nguyen thu hai
+	 * @return So nguyen la tong cua hai so a va b
+	 */
+	public int sum(int a, int b){
+		return a+b;
+	}
 
-	/** Implement actionPerformed */
+	/**
+	 * 
+	 * Implement actionPerformed
+	 * 
+	 */
 	public void actionPerformed(ActionEvent e) {
 		step();
 	}
 
-	/** Repeated task */
+	/**
+	 * Repeated task
+	 */
 	public void step() {
 
 		if (playing) {
@@ -105,6 +131,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			if (upPressed && playerOneY - paddleSpeed > 0) {
 				playerOneY -= paddleSpeed;
 			}
+			
 			// Move down if after moving paddle is not outside the screen
 			if (downPressed && playerOneY + playerOneHeight + paddleSpeed < getHeight()) {
 				playerOneY += paddleSpeed;
@@ -240,8 +267,12 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 			// draw the ball
 			g.setColor(Color.RED);
-			g.fillOval(ballX, ballY, diameter, diameter);
-
+			//g.fillOval(ballX, ballY, diameter, diameter);
+			if(ballNumber == 0){
+				g.drawImage(ball1.getImage(), ballX, ballY, diameter, diameter, null);
+			}else if(ballNumber == 1){
+				g.drawImage(ball2.getImage(), ballX, ballY, diameter, diameter, null);
+			}
 			// draw the paddles
 			g.fillRect(playerOneX, playerOneY, playerOneWidth, playerOneHeight);
 			g.fillRect(playerTwoX, playerTwoY, playerTwoWidth, playerTwoHeight);
